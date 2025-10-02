@@ -1,0 +1,130 @@
+package com.example.myapplication;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+
+    Button button;
+    TextView textView;
+    EditText editTextPodstawa;
+    EditText editTextWykladnik;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        button = findViewById(R.id.buttonOblicz);
+        textView = findViewById(R.id.textViewWynik);
+        editTextPodstawa = findViewById(R.id.editTextTextPersonName2Podstawa);
+        editTextWykladnik = findViewById(R.id.editTextTextPersonName3Wykladnik);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int podstawa = Integer.parseInt(editTextPodstawa.getText().toString());
+                int wykladnik = Integer.parseInt(editTextWykladnik.getText().toString());
+                textView.setText("wynik wynosi " + metodaPotega(podstawa, wykladnik));
+
+            }
+        });
+
+    }
+
+    public static int metodaPotega(int podstawa, int wykladnik){
+        int wynik = 1;
+
+        for(int i = 1; i <= wykladnik; i++){
+            wynik = wynik * podstawa;
+        }
+
+        return wynik;
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textViewPodstawa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="22sp"
+        android:text="Podaj podstawe" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName2Podstawa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_gravity="center"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/textViewWykladnik"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:layout_gravity="center"
+        android:text="Podaj wykladnik" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName3Wykladnik"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_gravity="center"
+        android:text="" />
+
+    <Button
+        android:id="@+id/buttonOblicz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:text="Oblicz" />
+
+    <TextView
+        android:id="@+id/textViewWynik"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="" />
+
+</LinearLayout>
+
+
+
+
+
